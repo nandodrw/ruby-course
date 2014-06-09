@@ -34,9 +34,15 @@ describe Exercises do
   end
 
   describe '.ex3' do
-    it ':Returns the sum of the given array of numbers' do
+    it 'Returns the sum of the given array of numbers' do
 
       expect(Exercises.ex3([1,2,3,4])).to eq(10)
+    end
+  end
+
+  describe '.ex4' do
+    it 'Returns the max number of the given array' do
+      expect(Exercises.ex4([1,4,3,0])).to eq(4)
     end
   end
 
