@@ -24,6 +24,14 @@ describe Exercises do
     end
   end
 
+  describe '.ex2'do
+    it 'returns the second element of an array' do
+
+      arr = [0,1,2]
+
+      expect(Exercises.ex2(arr)).to eq(1)
+    end
+  end
 
 
 
