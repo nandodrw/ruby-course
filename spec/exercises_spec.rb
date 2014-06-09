@@ -1,6 +1,7 @@
 require 'pry-debugger'
 require 'spec-helper'
 require 'active_support/core_ext/kernel/reporting'
+require 'time'
 
 describe Exercises do 
 
@@ -101,8 +102,27 @@ describe Exercises do
 
       Exercises.ex8(arr)
     end
+  end
+
+  describe '.ex9' do
+    it 'Returns `true` if the given time is in a leap year' do
+      t1 = Time.parse("01-01-1996")
+      t2 = Time.parse("01-01-2000")
+      t3 = Time.parse("01-01-2100")
+      t4 = Time.parse("01-01-1777")
+      expect(Exercises.ex9(t1)).to eq(true)
+      expect(Exercises.ex9(t2)).to eq(true)
+      expect(Exercises.ex9(t3)).to eq(false)
+      expect(Exercises.ex9(t4)).to eq(false)
+
+    end
+
 
   end
+
+
+
+  
  
 
 end
