@@ -22,7 +22,9 @@ module Exercises
   # Exercise 3
   #  - Returns the sum of the given array of numbers
   def self.ex3(array)
-    # TODO
+    # counter = 0
+    # array.each {|e| counter +=e }
+    array.inject(:+)
   end
 
   # Exercise 4
