@@ -46,6 +46,19 @@ describe Exercises do
     end
   end
 
+  describe '.ex5' do
+    it 'Iterates through an array and `puts` each element' do
+      require 'active_support/core_ext/kernel/reporting'
+      output = capture :stdout do
+        Exercises.ex5([1,4,3,0])
+      end
+
+      
+      expect(output).to include "1\n4\n3\n0\n"
+    end
+  end
+      
+
 
 
 
