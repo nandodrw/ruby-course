@@ -119,43 +119,57 @@ class RPSPlayer
   def initialize(name1, name2)
     @name1=name1
     @name2=name2
-    @count_win =[0,0]
+    @count_wins =[0,0]
   end
 
-  def play
+  def play(p1_move, p2_move)
 
     #1 :Rock
     #2: Paper
     #3: Scissors
-    p1_game = 1 + rand(3)
-    p2_game = 1 + rand(3)
-    if p1_game == 1
-      if p2_game == 2
-          @count_win[1] +=1
-      elsif p2_game == 3
-          @count_win[0] +=1
-      end
-    elsif p1_game == 2
-     if p2_game == 1
-          @count_win[0] +=1
-      elsif p2_game == 3
-          @count_win[1] +=1
-      end
-    elsif p1_game == 3
-     if p2_game == 1
-          @count_win[1] +=1
-      elsif p2_game == 2
-          @count_win[0] +=1
-      end
-    end  
+    return nil if p1_move == p2_move
+
+    case p1_move
+    when "rock"
+      return 0 if p2_move == "scissors"
+      return 1
+    when "paper"
+      return 0 if p2_move == "rock"
+      return 1
+    when "scissors"
+      return 0 if p2_move == "paper"
+      return 1
+    end
+      
+
+    # p1_game = 1 + rand(3)
+    # p2_game = 1 + rand(3)
+    # if p1_game == 1
+    #   if p2_game == 2
+    #       @count_win[1] +=1
+    #   elsif p2_game == 3
+    #       @count_win[0] +=1
+    #   end
+    # elsif p1_game == 2
+    #  if p2_game == 1
+    #       @count_win[0] +=1
+    #   elsif p2_game == 3
+    #       @count_win[1] +=1
+    #   end
+    # elsif p1_game == 3
+    #  if p2_game == 1
+    #       @count_win[1] +=1
+    #   elsif p2_game == 2
+    #       @count_win[0] +=1
+    #   end
+    # end  
   end
 
   def game_finished?
-      return @count_win[0] == 2 || @count_win[1] == 2 ? true : false 
+      return @count_wins[0] == 2 || @count_wins[1] == 2 ? true : false 
   end
 
-  def winer 
-    if @count_win[0] > @count_win[1]
+    if @count_wins[0] > @count_wins[1]
       return  @name1
     else
         return  @name2
@@ -176,13 +190,16 @@ class RPSPlayer
   
     coutn_plays = 0
 
-    3.times do
+    while true do
+      round_winner = play(p1_move, p2_move)
 
-      play
+      @count_wins[round_winner] += 1 unless round_winner.nil?
+      
       if game_finished?
-        return "The winer is" + winer
+        return "The winner is" + winner
       end
-      return "no winers today"
+
+      # return "no winers today"
   end
 end
 
