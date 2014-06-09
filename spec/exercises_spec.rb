@@ -57,6 +57,22 @@ describe Exercises do
       expect(output).to include "1\n4\n3\n0\n"
     end
   end
+
+  describe '.ex6' do
+    it 'updates last element to panda' do
+      arr = [1,2,4]
+
+      expect(Exercises.ex6(arr)).to eq([1,2,'panda'])
+
+    end
+
+    it 'changes last item to GODZILLA if last item is "panda"' do
+      arr = [1,2,'panda']
+
+      expect(Exercises.ex6(arr)).to eq([1,2,'GODZILLA'])
+    end
+  end
+
       
 
 

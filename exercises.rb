@@ -13,7 +13,7 @@ module Exercises
     array.size
   end
 
-  # Exercise 2
+  # Exercise 2 
   #  - Returns the second element of an array
   def self.ex2(array)
     array[1]
@@ -45,7 +45,7 @@ module Exercises
   #  - If the last item is already 'panda', update
   #    it to 'GODZILLA' instead
   def self.ex6(array)
-    # TODO
+    array.pop == "panda" ? array << "GODZILLA" : array << 'panda'
   end
 
   # Exercise 7
