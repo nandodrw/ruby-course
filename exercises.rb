@@ -83,7 +83,7 @@ module Exercises
     else
       return true
       end
-               
+
   end
 end
 
@@ -116,6 +116,54 @@ class RPSPlayer
   # lets both players play the game.
   #
   # When the game ends, ask if the player wants to play again.
+  def initialize(name1, name2)
+    @name1=name1
+    @name2=name2
+    @count_win =[0,0]
+  end
+
+  def play
+
+    #1 :Rock
+    #2: Paper
+    #3: Scissors
+    p1_game = 1 + rand(3)
+    p2_game = 1 + rand(3)
+    if p1_game == 1
+      if p2_game == 2
+          @count_win[1] +=1
+      elsif p2_game == 3
+          @count_win[0] +=1
+      end
+    elsif p1_game == 2
+     if p2_game == 1
+          @count_win[0] +=1
+      elsif p2_game == 3
+          @count_win[1] +=1
+      end
+    elsif p1_game == 3
+     if p2_game == 1
+          @count_win[1] +=1
+      elsif p2_game == 2
+          @count_win[0] +=1
+      end
+    end  
+  end
+
+  def game_finished?
+      return @count_win[0] == 2 || @count_win[1] == 2 ? true : false 
+  end
+
+  def winer 
+    if @count_win[0] > @count_win[1]
+      return  @name1
+    else
+        return  @name2
+    end
+  end
+    
+  end
+
   def start
 
     # TODO
@@ -125,6 +173,16 @@ class RPSPlayer
     #          what the player is typing! :D
     # This is also why we needed to require 'io/console'
     # move = STDIN.noecho(&:gets)
+  
+    coutn_plays = 0
+
+    3.times do
+
+      play
+      if game_finished?
+        return "The winer is" + winer
+      end
+      return "no winers today"
   end
 end
 
