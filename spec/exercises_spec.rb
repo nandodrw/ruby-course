@@ -1,5 +1,6 @@
 require 'pry-debugger'
 require 'spec-helper'
+require 'active_support/core_ext/kernel/reporting'
 
 describe Exercises do 
 
@@ -48,7 +49,7 @@ describe Exercises do
 
   describe '.ex5' do
     it 'Iterates through an array and `puts` each element' do
-      require 'active_support/core_ext/kernel/reporting'
+      
       output = capture :stdout do
         Exercises.ex5([1,4,3,0])
       end
@@ -73,11 +74,35 @@ describe Exercises do
     end
   end
 
-      
+  describe '.ex7' do
+    it 'adds "str" to array if already present' do
 
+    expect(Exercises.ex7(['a','b',4,"nando","paul"],"nando")).to eq(['a','b',4,"nando","paul","nando"])
+    end
 
+  it 'does nothing if "str" not in array'do
 
+    expect(Exercises.ex7(['a','b',4,"nando","paul"],"Fernando")).to eq(['a','b',4,"nando","paul"])
+    end
+  end
+
+  describe '.ex8' do
+
+    it 'Iterate through `people` and print out their name and occupation' do
+      # output = capture :stdout do
+      arr = Array.new
+      h1 = {:name=>"Bob", :occupation=>"builder"}
+      h2 = {:name=>"Thomas", :occupation=>"train engine"}
+      arr << h1
+      arr << h2
+
+      STDOUT.should_receive(:puts).with("name: Bob, occupation: builder")
+      STDOUT.should_receive(:puts).with("name: Thomas, occupation: train engine")
+
+      Exercises.ex8(arr)
+    end
+
+  end
+ 
 
 end
-
-
